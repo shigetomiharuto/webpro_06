@@ -27,35 +27,32 @@ app.get("/luck", (req, res) => {
   res.render( 'luck', {number:num, luck:luck} );
 });
 
+
 app.get("/janken", (req, res) => {
-  let hand = req.query.hand; // ユーザーの手: "グー", "チョキ", "パー"
-  let win = Number(req.query.win);
-  let total = Number(req.query.total);
-  console.log({ hand, win, total });
+  let hand = req.query.hand;
+  let win = Number(req.query.win) || 0;
+  let total = Number(req.query.total) || 0;
 
   const num = Math.floor(Math.random() * 3 + 1);
   let cpu = '';
-  if (num === 1) cpu = 'グー'; // グー
-  else if (num === 2) cpu = 'チョキ'; // チョキ
-  else cpu = 'パー'; // パー
+  if (num == 1) cpu = 'グー';
+  else if (num == 2) cpu = 'チョキ';
+  else cpu = 'パー';
 
-  // 勝敗の判定
   let judgement = '';
   if (hand === cpu) {
-    judgement = 'あいこ'; // 引き分け
+    judgement = '引き分け';
   } else if (
     (hand === 'グー' && cpu === 'チョキ') ||
     (hand === 'チョキ' && cpu === 'パー') ||
     (hand === 'パー' && cpu === 'グー')
   ) {
-    judgement = '勝ち'; // 勝ち
-    win += 1; // 勝ちのカウントを増やす
+    judgement = '勝ち';
+    win += 1;  
   } else {
-    judgement = '負け'; // 負け
-    // 負けた場合は勝ち数を増やさない
+    judgement = '負け';
   }
-  
-  total += 1; // 総ゲーム数を増やす
+  total += 1;
 
   const display = {
     your: hand,
@@ -63,11 +60,10 @@ app.get("/janken", (req, res) => {
     judgement: judgement,
     win: win,
     total: total
-  };
-  
+  }
   res.render('janken', display);
 });
 
-app.listen(8080, () => console.log("Example app listening on port 8080!"));
 
+app.listen(8080, () => console.log("Example app listening on port 8080!"));
 
