@@ -65,5 +65,81 @@ app.get("/janken", (req, res) => {
 });
 
 
-app.listen(8080, () => console.log("Example app listening on port 8080!"));
 
+
+// あっち向いてホイのルート
+app.get("/attimuite", (req, res) => {
+  let direction = req.query.direction;  // プレイヤーが指す方向
+  let win = Number(req.query.win) || 0;  // 勝利数
+  let total = Number(req.query.total) || 0;  // 合計プレイ数
+
+  // ランダムにCPUの指す方向を決定
+  // ランダムにCPUの指す方向を決定
+const num = Math.floor(Math.random() * 4);  // 0 から 3 までの数字を生成
+let cpu = '';
+if (num === 0) cpu = '右';
+else if (num === 1) cpu = '左';
+else if (num === 2) cpu = '上';
+else if (num === 3) cpu = '下';
+
+
+  // 勝敗判定
+  let judgement = '';
+  if (direction === cpu) {
+    judgement = '勝ち';
+    win += 1;
+  } else {
+    judgement = '負け';
+  }
+  total += 1;
+
+  // 結果をオブジェクトにまとめる
+  const display = {
+    yourDirection: direction,
+    cpuDirection: cpu,
+    judgement: judgement,
+    win: win,
+    total: total,
+    winRate: ((win / total) * 100).toFixed(2) + '%' // 勝率を追加
+  };
+
+  // 結果をテンプレートに渡してレンダリング
+  res.render('attimuite', display);
+});
+
+
+app.get("/number-guess", (req, res) => {
+  let playerGuess = Number(req.query.guess);  // プレイヤーが選んだ数字
+  let win = Number(req.query.win) || 0;  // 勝利数
+  let total = Number(req.query.total) || 0;  // 合計プレイ数
+
+  // ランダムにコンピューターの数字を生成 (1から10まで)
+  const cpuGuess = Math.floor(Math.random() * 10) + 1;
+
+  // 勝敗判定
+  let judgement = '';
+  if (playerGuess === cpuGuess) {
+    judgement = '勝ち';
+    win += 1;
+  } else {
+    judgement = '負け';
+  }
+  total += 1;
+
+  // 結果をオブジェクトにまとめる
+  const display = {
+    playerGuess: playerGuess,
+    cpuGuess: cpuGuess,
+    judgement: judgement,
+    win: win,
+    total: total,
+    winRate: ((win / total) * 100).toFixed(2) + '%'  // 勝率を追加
+  };
+
+  // 結果をテンプレートに渡してレンダリング
+  res.render('number-guess', display);
+});
+
+
+// サーバーを起動
+app.listen(8080, () => console.log("Example app listening on port 8080!"));

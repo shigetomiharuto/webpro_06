@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>あっち向いてホイ</title>
+</head>
+<body>
+    <h1>あっち向いてホイ</h1>
+    <p>あなたは「<%= yourDirection %>」を指しました。</p>
+    <p>コンピュータは「<%= cpuDirection %>」を向きました。</p>
+    <p>判定：<%= judgement %></p>
+    <p>現在、<%= total %> 試合中、<%= win %> 勝しています。勝率：<%= winRate %></p>
+    <hr>
+    
+    <form action="/attimuite">
+        <label for="direction">次はどこを向く？（右・左・上・下）：</label>
+        <input type="text" id="direction" name="direction" required>
+        <input type="hidden" name="win" value="<%= win %>">
+        <input type="hidden" name="total" value="<%= total %>">
+        <input type="submit" value="あっち向いてホイ">
+    </form>
+</body>
+</html>
