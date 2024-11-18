@@ -31,7 +31,7 @@ views/number-guess.ejs | 数字当てゲームのテンプレートファイル
 ```http://localhost:8080/hello1```または```http://localhost:8080/hello2```にアクセスすると,ブラウザに「Hello world」と「Bon jour」のメッセージが表示される.
 メッセージの表示方法が異なるだけで,どちらも同じ内容を出力する.
 
-####　ハローの流れ
+####　ハローのフローチャート
 ```mermaid
 flowchart TD;
   start["開始"]
@@ -68,7 +68,7 @@ flowchart TD;
 ```http://localhost:8080//icon``` にアクセスすると,Appleのロゴがブラウザに表示される.
 ```public``` フォルダにある ```Apple_logo_black.svg``` が表示されるため,事前にファイルを配置しておく必要がある.
 
-#### アイコンの流れ
+#### アイコンのフローチャート
 ```mermaid
 flowchart TD;
   start["開始"]
@@ -99,7 +99,7 @@ flowchart TD;
 #### 使用手順
 ```http://localhost:8080//luck``` にアクセスすると,ランダムに決まった運勢が表示される.
 
-#### 占いの流れ
+#### 占いのフローチャート
 ```mermaid
 flowchart TD;
   start["開始"]
@@ -129,7 +129,7 @@ access["/luck にアクセス"]
 ```http://localhost:8080/janken```にアクセスしプレイヤーの手（グー、チョキ、パー）を指定する.コンピュータの手が表示され,勝敗が判定される,
 勝利数や合計プレイ数が反映され,結果が表示される.
 
-#### ジャンケンの流れ
+#### ジャンケンのフローチャート
 ```mermaid
 flowchart TD;
   start["開始"];
@@ -169,7 +169,7 @@ flowchart TD;
 ```http://localhost:8080/attimuite```にアクセスし（右,左,上,下）を指定する.
 プレイヤーの指した方向とコンピュータの指した方向が表示され,勝敗結果と勝率が反映される.
 
-#### あっち向いてホイの流れ
+#### あっち向いてホイのフローチャート
 ```mermaid
 flowchart TD;
   start["開始"]
@@ -204,7 +204,7 @@ flowchart TD;
 ```http://localhost:8080/number-guess``` にアクセスし数字を指定する.
 プレイヤーが選んだ数字とコンピュータの選んだ数字が表示され,勝敗結果と勝率が反映される.
 
-#### 数字当てゲームの流れ
+#### 数字当てゲームのフローチャート
 ```mermaid
 flowchart TD;
  access["/namber_guess にアクセス"]
