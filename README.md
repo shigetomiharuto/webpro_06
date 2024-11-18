@@ -15,9 +15,9 @@ views/luck.ejs | おみくじのテンプレートファイル
 views/attimuite.ejs | あっち向いてホイのテンプレートファイル
 views/number-guess.ejs | 数字当てゲームのテンプレートファイル
 
-
+## 起動方法
 1. ターミナルで```node app5.js```を入力しport 8080を起動する
-
+2. ブラウザで```http://localhost:8080/????```を入力しアクセスする.
 ## hello1 hello2
 #### 機能説明
 ```/hello1``` と ```/hello2``` は,異なる方法で「Hello world」と「Bon jour」のメッセージを表示する.
