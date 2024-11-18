@@ -31,7 +31,7 @@ views/number-guess.ejs | 数字当てゲームのテンプレートファイル
 ```http://localhost:8080/hello1```または```http://localhost:8080/hello2```にアクセスすると,ブラウザに「Hello world」と「Bon jour」のメッセージが表示される.
 メッセージの表示方法が異なるだけで,どちらも同じ内容を出力する.
 
-####　ハローのフローチャート
+#### ハローのフローチャート
 ```mermaid
 flowchart TD;
   start["開始"]
