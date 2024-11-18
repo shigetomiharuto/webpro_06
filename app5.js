@@ -23,7 +23,8 @@ app.get("/luck", (req, res) => {
   let luck = '';
   if( num==1 ) luck = '大吉';
   else if( num==2 ) luck = '中吉';
-  console.log( 'あなたの運勢は' + luck + 'です' );
+
+console.log( 'あなたの運勢は' + luck + 'です' );
   res.render( 'luck', {number:num, luck:luck} );
 });
 
@@ -67,7 +68,7 @@ app.get("/janken", (req, res) => {
 
 
 
-// あっち向いてホイのルート
+
 app.get("/attimuite", (req, res) => {
   let direction = req.query.direction;  // プレイヤーが指す方向
   let win = Number(req.query.win) || 0;  // 勝利数
