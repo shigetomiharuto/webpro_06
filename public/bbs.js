@@ -87,6 +87,8 @@ document.querySelector('#check').addEventListener('click', () => {
     });
 });
 
+
+//編集機能
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('edit')) {
         const postDiv = event.target.closest('.cover');
@@ -123,47 +125,7 @@ document.addEventListener('click', (event) => {
 });
 
 
-
-
-// レス機能の追加
-
-document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('reply')) {
-        const postDiv = event.target.closest('.cover');
-        const replyForm = document.createElement('div');
-
-        replyForm.innerHTML = `
-            <input type="text" class="reply-message" placeholder="返信を入力">
-            <button class="send-reply">送信</button>
-        `;
-        postDiv.appendChild(replyForm);
-
-        replyForm.querySelector('.send-reply').addEventListener('click', () => {
-            const replyMessage = replyForm.querySelector('.reply-message').value;
-
-            const params = {
-                method: "POST",
-                body: `id=${postDiv.dataset.id}&message=${replyMessage}`,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            };
-
-            fetch('/reply', params)
-                .then(response => response.json())
-                .then(() => {
-                    replyForm.remove();
-                    const newReply = document.createElement('div');
-                    newReply.className = 'reply';
-                    newReply.innerText = replyMessage;
-                    postDiv.appendChild(newReply);
-                })
-                .catch(console.error);
-        });
-    }
-});
-
-// 検索機能の追加
+// 検索機能
 
 document.querySelector('#search-button').addEventListener('click', () => {
     const searchQuery = document.querySelector('#search-box').value;
@@ -227,28 +189,7 @@ document.querySelector('#post').addEventListener('click', () => {
         .catch(console.error);
 });
 
-fetch('/check')
-    .then(res => res.json())  // サーバからJSONデータを取得
-    .then(response => {  // ここでresponseが使える
-        for (let mes of response.messages) {
-            console.log(mes);  // 表示する投稿
-            let cover = document.createElement('div');
-            cover.className = 'cover';
-            let name_area = document.createElement('span');
-            name_area.className = 'name';
-            name_area.innerText = mes.name;
-            let mes_area = document.createElement('span');
-            mes_area.className = 'mes';
-            mes_area.innerText = mes.message;
-            cover.appendChild(name_area);
-            cover.appendChild(mes_area);
 
-            // IDをセット
-            cover.dataset.id = mes.id;
-            bbs.appendChild(cover);
-        }
-    })
-    .catch(error => console.error('Error:', error));
 
     // 返信機能
 document.addEventListener('click', (event) => {
